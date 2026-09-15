@@ -1,4 +1,4 @@
-/*// Pedir números al usuario
+// Pedir números al usuario
 var numero1 = parseInt(prompt('Introduce el primer número',0));
 var numero2 = parseInt(prompt('Introduce el segundo número',0));
 
@@ -32,5 +32,5 @@ else if (numero2 > numero1) {
 else {
     alert("INTRODUCE NÚMEROS CORRECTOS");
 }
-*/
+
 

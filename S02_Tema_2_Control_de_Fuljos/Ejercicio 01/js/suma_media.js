@@ -27,5 +27,5 @@ console.log("Suma actual:", suma, "contador:", contador);
 // Cuando termina el bucle, calcular resultados
 var media = suma / contador;
 
-alert("La suma de todos los npumeros es: " + suma + 
+alert("La suma de todos los números es: " + suma + 
     "\nLa media de todos los números es: " + media); // el \n es un salto de línea \t es tabulador
