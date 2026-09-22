@@ -7,10 +7,10 @@ let porcentajeEgreso = 0;
 
 const cargarCabecero = (totalIngresos, totalEgresos)  => {
     let presupuesto = totalIngresos() - totalEgresos();
-    return presupuesto;
+        console.log(totalIngresos);
+    console.log(totalEgresos);
+    
 };
-
-
 
  // Crear funciones para sumar ingresos
 const totalIngresos = ingresos => {
@@ -45,5 +45,4 @@ totalIngresos();
 
 porcentajeEgreso = totalEgresos() / totalIngresos();
 
-console.log(totalIngresos);
-console.log(totalEgresos);
+
