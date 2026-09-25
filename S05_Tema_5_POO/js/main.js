@@ -116,7 +116,7 @@ class CarritoCompras
 
 // Paso 18. Crea un nuevo objeto llamado "libro1", el cual será una instancia de la clase Libro.
 // Paso 19. Crea un un nuevo objeto llamado "comic1", de la clase Comic
-// Pas 20. Crea un un nuevo objeto llamado "carrito", de la clase CarritoCompras
+// Paso 20. Crea un un nuevo objeto llamado "carrito", de la clase CarritoCompras
 
 const libro1 = new Libro("Cien años de soledad", "Gabirel García Marquez", 300);
 const comic1 = new Comic("Spider-man", "Stan Lee", 150, ["Steve Ditko"]);
