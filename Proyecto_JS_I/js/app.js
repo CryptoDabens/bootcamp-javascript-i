@@ -1,19 +1,22 @@
 // Declaración de Variables
 
+// Validar función cargarCabecero: usar estos arreglos prueba
+let egresos = [900,400];
+let ingresos = [9000,400];
 
 // Crear función "cargarCabecero" para mostrar la diferencia entre ingresos y egresos
-const cargarCabecero = (ingresos, egresos)  => {
-    const presupuesto = (totalIngresos(ingresos) - totalEgresos(egresos));
-    const porcentajeEgreso = totalEgresos(egresos) / totalIngresos(ingresos);
+const cargarCabecero = ()  => {
+    const presupuesto = (totalIngresos() - totalEgresos());
+    const porcentajeEgreso = totalEgresos() / totalIngresos();
     console.log(formatoMoneda(presupuesto));
     console.log(formatoPorcentaje(porcentajeEgreso));
-    console.log(formatoMoneda(totalIngresos(ingresos)));
-    console.log(formatoPorcentaje(totalEgresos(egresos)));
+    console.log(formatoMoneda(totalIngresos()));
+    console.log(formatoPorcentaje(totalEgresos()));
     
 };
 
 // Crear funciones para sumar ingresos
-const totalIngresos = (ingresos) => {
+const totalIngresos = () => {
     let totalIngreso = 0;
     for (let ingreso of ingresos) {
         totalIngreso += ingreso;
@@ -21,7 +24,7 @@ const totalIngresos = (ingresos) => {
     return totalIngreso; 
 };
  // Crear funciones para sumar egresos
-const totalEgresos = (egresos) => {
+const totalEgresos = () => {
     let totalEgreso = 0;
     for (let egreso of egresos) {
         totalEgreso += egreso;
@@ -29,9 +32,7 @@ const totalEgresos = (egresos) => {
     return totalEgreso; 
 };
 
-// Validar función cargarCabecero: usar estos arreglos prueba
-let egresos = [900,400];
-let ingresos = [9000,400];
+
 
 //const presupuesto = cargarCabecero(ingresos, egresos);
 
@@ -61,5 +62,7 @@ const formatoPorcentaje = valor => {
     return valor;
 };
 
-
-cargarCabecero(ingresos, egresos);
+cargarCabecero();
+// ------------------------------------------------------
+// Fin del Avance 2
+// ------------------------------------------------------

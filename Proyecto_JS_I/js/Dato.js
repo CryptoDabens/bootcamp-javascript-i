@@ -11,4 +11,16 @@ descripción con el valor que se está recibiendo.
 atributo descripción con sus respectivos valores.
 • Recuerda que es importante encapsular los datos 
 */ 
-class Dato {};
+class Dato {
+    function constructor(descripcion, valor {
+        this._descripcion: descripcion,
+        this._valor: valor
+        };
+    )
+};
+
+
+
+// --------------------------------------
+// Clases hijas
+// --------------------------------------
