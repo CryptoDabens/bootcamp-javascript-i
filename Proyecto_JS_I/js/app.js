@@ -1,18 +1,22 @@
-// Declaración de Variables
+// ------------------------------------------------------
+// Inicio del Avance 1
+// ------------------------------------------------------
 
-// Validar función cargarCabecero: usar estos arreglos prueba
+// Validar función cargarCabecero con arreglos de prueba
 let egresos = [900,400];
 let ingresos = [9000,400];
 
-// Crear función "cargarCabecero" para mostrar la diferencia entre ingresos y egresos
+// ------------------------------------------------------
+// Funcion cargarCabecero
+// ------------------------------------------------------
 const cargarCabecero = ()  => {
-    const presupuesto = (totalIngresos() - totalEgresos());
-    const porcentajeEgreso = totalEgresos() / totalIngresos();
+    let presupuesto = (totalIngresos() - totalEgresos());
+    let porcentajeEgreso = totalEgresos() / totalIngresos();
+
     console.log(formatoMoneda(presupuesto));
     console.log(formatoPorcentaje(porcentajeEgreso));
     console.log(formatoMoneda(totalIngresos()));
     console.log(formatoPorcentaje(totalEgresos()));
-    
 };
 
 // Crear funciones para sumar ingresos
@@ -34,11 +38,13 @@ const totalEgresos = () => {
 
 
 
-//const presupuesto = cargarCabecero(ingresos, egresos);
+// ------------------------------------------------------
+// Fin del Avance 1
+// ------------------------------------------------------
 
 
 // ------------------------------------------------------
-// Avance 2, parte 2: Formatear valores y procentajes
+// Inicio Avance 2, parte 2: Formatear valores y procentajes
 // ------------------------------------------------------
 
 // Función formatoMoneda, pa darle formato: estilo moneda, mondea MXN, y decimales igual a dos dígitos.
@@ -62,7 +68,10 @@ const formatoPorcentaje = valor => {
     return valor;
 };
 
+
+// Llamar a la función cargarCabecero
 cargarCabecero();
+
 // ------------------------------------------------------
 // Fin del Avance 2
 // ------------------------------------------------------
