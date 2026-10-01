@@ -10,16 +10,27 @@ descripción con el valor que se está recibiendo.
 • Crea los métodos set y get  para el atributo valor de la misma manera que se realizó para el
 atributo descripción con sus respectivos valores.
 • Recuerda que es importante encapsular los datos 
-*/ 
+*/
 class Dato {
-    constructor(descripcion, valor) {
-        this._descripcion = descripcion;
-        this._valor = valor;
-        }
-};
+  constructor(descripcion, valor) {
+    this._descripcion = descripcion;
+    this._valor = valor;
+  }
 
+  // Getters y Setters
+  get descripcion() {
+    return this._descripcion;
+  }
 
+  set descripcion(descripcion) {
+    this._descripcion = descripcion;
+  }
 
-// --------------------------------------
-// Clases hijas
-// --------------------------------------
+  get valor() {
+    return this._valor;
+  }
+
+  set valor(valor) {
+    this._valor = valor;
+  }
+}

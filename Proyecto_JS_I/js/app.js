@@ -3,8 +3,20 @@
 // ------------------------------------------------------
 
 // Validar función cargarCabecero con arreglos de prueba
-let egresos = [900,400];
-let ingresos = [9000,400];
+// let egresos = [900,400];
+// let ingresos = [9000,400];
+
+// Arreglos definitivos
+const ingresos = [
+    new Ingreso('Salario', 20000),
+    new Ingreso('Venta auto', 50000)
+];
+
+const egresos = [
+    new Egreso('Renta', 4000),
+    new Egreso('Ropa', 800)
+];
+
 
 // ------------------------------------------------------
 // Funcion cargarCabecero
@@ -24,7 +36,7 @@ const cargarCabecero = ()  => {
 const totalIngresos = () => {
     let totalIngreso = 0;
     for (let ingreso of ingresos) {
-        totalIngreso += ingreso;
+        totalIngreso += ingreso.valor;
     }
     return totalIngreso; 
 };
@@ -32,7 +44,7 @@ const totalIngresos = () => {
 const totalEgresos = () => {
     let totalEgreso = 0;
     for (let egreso of egresos) {
-        totalEgreso += egreso;
+        totalEgreso += egreso.valor;
     }
     return totalEgreso; 
 };
