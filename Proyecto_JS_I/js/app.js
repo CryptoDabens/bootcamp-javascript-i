@@ -13,8 +13,8 @@ const ingresos = [
 ];
 
 const egresos = [
-    new Egreso ('Renta', 4000),
-    new Egreso ('Ropa', 800)
+    new Egreso('Renta', 4000),
+    new Egreso('Ropa', 800)
 ];
 
 
@@ -36,7 +36,7 @@ const cargarCabecero = ()  => {
 const totalIngresos = () => {
     let totalIngreso = 0;
     for (let ingreso of ingresos) {
-        totalIngreso += ingreso;
+        totalIngreso += ingreso.valor;
     }
     return totalIngreso; 
 };
@@ -44,7 +44,7 @@ const totalIngresos = () => {
 const totalEgresos = () => {
     let totalEgreso = 0;
     for (let egreso of egresos) {
-        totalEgreso += egreso;
+        totalEgreso += egreso.valor;
     }
     return totalEgreso; 
 };
