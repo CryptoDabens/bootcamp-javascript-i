@@ -17,7 +17,7 @@ class Ingreso extends Dato {
         this._id = ++Ingreso.contadorIngresos;
     }
 
-    get_id() {
+    get id() {
         return this._id;
     }
 
