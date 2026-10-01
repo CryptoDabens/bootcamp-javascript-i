@@ -3,8 +3,20 @@
 // ------------------------------------------------------
 
 // Validar función cargarCabecero con arreglos de prueba
-let egresos = [900,400];
-let ingresos = [9000,400];
+// let egresos = [900,400];
+// let ingresos = [9000,400];
+
+// Arreglos definitivos
+let ingresos = new Ingreso { 
+    ['Salario', 20000],
+    ['Venta auto', 50000]
+};
+
+const egresos = new Egreso {
+    ['Renta', 4000],
+    ['Ropa', 800]
+};
+
 
 // ------------------------------------------------------
 // Funcion cargarCabecero
