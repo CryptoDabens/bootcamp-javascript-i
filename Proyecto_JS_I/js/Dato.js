@@ -14,8 +14,8 @@ atributo descripción con sus respectivos valores.
 class Dato {
     constructor(descripcion, valor) {
         this._descripcion = descripcion;
-        this._valor = valor
-        };
+        this._valor = valor;
+        }
 };
 
 

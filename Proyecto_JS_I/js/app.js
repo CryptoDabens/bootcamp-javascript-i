@@ -52,8 +52,7 @@ const formatoMoneda = valor => {
         currency: "MXN",
         minimumFractionDigits: 2
     }
-    valor.toLocaleString("es-MX", opciones);
-    return valor;
+    return valor.toLocaleString("es-MX", opciones);
 };
 
 // Función formatoPorcentaje
@@ -62,8 +61,7 @@ const formatoPorcentaje = valor => {
         style: "percent",
         minimumFractionDigits: 2
     }
-    valor.toLocaleString("es-MX", opciones);
-    return valor;
+    return valor.toLocaleString("es-MX", opciones);
 };
 
 
