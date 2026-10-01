@@ -6,7 +6,7 @@
 // recibir los parámetros descripción y valor.
 // • Define el atributo _id y para asignarle un valor, utiliza el tipo de variable estática "static".
 // Realiza un preincremento a la variable estática de la clase Ingresos.
-// • Crea el método get_id, el cual va a regresar el valor de this._id, no agregues el método
+// • Crea el método get id, el cual va a regresar el valor de this._id, no agregues el método
 // set porque este valor no deberá ser modificado.
 
 class Ingreso extends Dato {
