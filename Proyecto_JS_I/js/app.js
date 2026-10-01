@@ -16,7 +16,8 @@ const cargarCabecero = ()  => {
     console.log(formatoMoneda(presupuesto));
     console.log(formatoPorcentaje(porcentajeEgreso));
     console.log(formatoMoneda(totalIngresos()));
-    console.log(formatoPorcentaje(totalEgresos()));
+    console.log(formatoMoneda(totalEgresos()));
+    
 };
 
 // Crear funciones para sumar ingresos
@@ -36,12 +37,9 @@ const totalEgresos = () => {
     return totalEgreso; 
 };
 
-
-
 // ------------------------------------------------------
 // Fin del Avance 1
 // ------------------------------------------------------
-
 
 // ------------------------------------------------------
 // Inicio Avance 2, parte 2: Formatear valores y procentajes
@@ -62,7 +60,7 @@ const formatoMoneda = valor => {
 const formatoPorcentaje = valor => {
     const opciones = { 
         style: "percent",
-        minimunFractionDigits: 2
+        minimumFractionDigits: 2
     }
     valor.toLocaleString("es-MX", opciones);
     return valor;

@@ -12,11 +12,10 @@ atributo descripción con sus respectivos valores.
 • Recuerda que es importante encapsular los datos 
 */ 
 class Dato {
-    function constructor(descripcion, valor {
-        this._descripcion: descripcion,
-        this._valor: valor
+    constructor(descripcion, valor) {
+        this._descripcion = descripcion;
+        this._valor = valor
         };
-    )
 };
 
 
