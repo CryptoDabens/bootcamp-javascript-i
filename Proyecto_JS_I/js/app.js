@@ -8,8 +8,9 @@
 
 // Arreglos definitivos
 const ingresos = [
-    new Ingreso('Salario', 20000),
-    new Ingreso('Venta auto', 50000)
+    new Ingreso('Salario', 10000),
+    new Ingreso('Venta auto', 300000),
+    new Ingreso('Honorarios', 5000)
 ];
 
 const egresos = [
@@ -83,13 +84,51 @@ const formatoPorcentaje = valor => {
 };
 
 
+// ------------------------------------------------------
+// Avance 4: Cargar ingresos dinámicamente (página 14)
+// ------------------------------------------------------
+const cargarIngresos = () => {
+    let ingresosHTML = '';
+
+    for (let ingreso of ingresos) {
+        ingresosHTML += crearIngresoHTML(ingreso); // el += es para concatenar cada ingreso que se vaya creando en la función crearIngresoHTML
+    }
+    document.getElementById('lista-ingresos').innerHTML = ingresosHTML; /* Esta versión corta conviene cuando se va a usar el elemento una sola vez en la función. Se lee en un solo paso y no se hace doble llamado al DOM. */
+
+    //  const listaIngresos = document.getElementById('lista-ingresos');
+    //  listaIngresos.innerHTML = ingresosHTML; 
+    //  Es otra forma de hacerlo, pero no es la más recomendable, ya que se hace un doble llamado al DOM. Conviene usar cuando vas a usar el elemento varias veces en la misma función. La ventaja es que Se lee en dos pasos claros y no buscas el elemento en el DOM cada vez.
+};
+
+const crearIngresosHTML = ingreso => {
+    let ingresoHTML = `
+        <div class="elemento limpiarEstilos">
+            <div class="elemento_descripcion">${ingreso.descripcion}</div> 
+            <div class="derecha limpiarEstilos">
+                <div class="elemento_valor">${formatoMoneda(ingreso.valor)}</div>
+                <div class="elemento_eliminar">
+                    <button class="elemento_eliminar--btn">
+                        <ion-icon name="close-circle-outline">${onclick} = eliminarIngreso(${ingreso.id})</ion-icon>
+                    </button>
+                </div>
+            </div>
+        </div>  
+        `;
+    // Se cambió "Salario" por ${ingreso.descripcion} para que se muestre la descripción de cada ingreso.
+    // Se cambió "+2,200.00" por ${formatoMoneda(ingreso.valor)} para que se muestre el valor de cada ingreso.
+    // Se cambió onclick="eliminarIngreso(1)" por ${onclick} = eliminarIngreso(${ingreso.id}) para que se pueda eliminar el ingreso correspondiente al id del ingreso.
+        
+    return ingresoHTML;    
+};
+
+
 // Llamar a la función cargarCabecero
 // cargarCabecero(); <-- Queda sustituida por el Avance 4 en la función cargarApp, que se ejecutará al cargar la página.
 
 const cargarApp = () => {
     cargarCabecero();
+    cargarIngresos();
 }
 
-// ------------------------------------------------------
-// Fin del Avance 2
-// ------------------------------------------------------
+
+
