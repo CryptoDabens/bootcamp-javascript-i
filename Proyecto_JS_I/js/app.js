@@ -25,11 +25,17 @@ const cargarCabecero = ()  => {
     let presupuesto = (totalIngresos() - totalEgresos());
     let porcentajeEgreso = totalEgresos() / totalIngresos();
 
+    document.getElementById('presupuesto').innerHTML = formatoMoneda(presupuesto);
+    document.getElementById('porcentaje').innerHTML = formatoPorcentaje(porcentajeEgreso);
+    document.getElementById('ingresos').innerHTML = formatoMoneda(totalIngresos());
+    document.getElementById('egresos').innerHTML = formatoMoneda(totalEgresos());
+    
+    /* Sustituido por el Avance 4
     console.log(formatoMoneda(presupuesto));
     console.log(formatoPorcentaje(porcentajeEgreso));
     console.log(formatoMoneda(totalIngresos()));
-    console.log(formatoMoneda(totalEgresos()));
-    
+    console.log(formatoMoneda(totalEgresos())); 
+    */
 };
 
 // Crear funciones para sumar ingresos
@@ -78,7 +84,11 @@ const formatoPorcentaje = valor => {
 
 
 // Llamar a la función cargarCabecero
-cargarCabecero();
+// cargarCabecero(); <-- Queda sustituida por el Avance 4 en la función cargarApp, que se ejecutará al cargar la página.
+
+const cargarApp = () => {
+    cargarCabecero();
+}
 
 // ------------------------------------------------------
 // Fin del Avance 2
