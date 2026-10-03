@@ -13,13 +13,13 @@
     <div class="cabecero">
         <div class="presupuesto">
             <div class="presupuesto_titulo">Presupuesto Disponible</div>
-            <div class="presupuesto_valor" id="presupuesto"></div> <!-- Avance 4: se agreg´o el id egresos para poder acceder a este elemento desde js -->
+            <div class="presupuesto_valor" id="presupuesto"></div> <!-- Avance 4: se agregó el id egresos para poder acceder a este elemento desde js -->
             
             <!-- Resumen de Ingresos -->
             <div class="presupuesto_ingreso limpiarEstilos">
-                <div class="presupuesto_ingreso--texto" id="ingresos">Ingresos</div><!-- Avance 4: se agreg´o el id egresos para poder acceder a este elemento desde js -->
+                <div class="presupuesto_ingreso--texto" >Ingresos</div><!-- Avance 4: se agregó el id egresos para poder acceder a este elemento desde js -->
                 <div class="derecha">
-                    <div class="presupuesto_ingreso--valor">+4,000.00</div>
+                    <div class="presupuesto_ingreso--valor" id="ingresos">+4,000.00</div>
                     <div class="presupuesto_ingreso--porcentaje">&nbsp;</div>
                 </div>
             </div>
@@ -73,20 +73,20 @@
                         </div>
                     </div>
                 </div>  
-            </div>      
+                  
                     
-            <div class="elemento limpiarEstilos">
-                <div class="elemento_descripcion">Venta Coche</div>
-                <div class="derecha limpiarEstilos">
-                    <div class="elemento_valor">+1,500.00</div>
-                    <div class="elemento_eliminar">
-                        <button class="elemento_eliminar--btn">
-                            <ion-icon name="close-circle-outline"></ion-icon>
-                        </button>
+                <div class="elemento limpiarEstilos">
+                    <div class="elemento_descripcion">Venta Coche</div>
+                    <div class="derecha limpiarEstilos">
+                        <div class="elemento_valor">+1,500.00</div>
+                        <div class="elemento_eliminar">
+                            <button class="elemento_eliminar--btn">
+                                <ion-icon name="close-circle-outline"></ion-icon>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-
         </div>
     
     
@@ -107,28 +107,25 @@
                         </div>
                     </div>
                 </div>
-            </div>    
+                
             
-            <div class="elemento limpiarEstilos">
-                <div class="elemento_descripcion">Ropa</div>
-                <div class="derecha limpiarEstilos">
-                    <div class="elemento_valor">-400.00</div>
-                    <div class="elemento_porcentaje">9%</div>
-                    <div class="elemento_eliminar">
-                        <button class="elemento_eliminar--btn">
-                            <ion-icon name="close-circle-outline"></ion-icon>
-                        </button>
+                <div class="elemento limpiarEstilos">
+                    <div class="elemento_descripcion">Ropa</div>
+                    <div class="derecha limpiarEstilos">
+                        <div class="elemento_valor">-400.00</div>
+                        <div class="elemento_porcentaje">9%</div>
+                        <div class="elemento_eliminar">
+                            <button class="elemento_eliminar--btn">
+                                <ion-icon name="close-circle-outline"></ion-icon>
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
-
+            </div>  
         </div>
     </div>
 
-</div>
-
-
-    <!-- Aquí va  el llamado a la fuente d elos ion-icons -->
+    <!-- Aquí va  el llamado a la fuente de los ion-icons -->
     <script type="module" src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js"></script>
     
     <script src="./js/Dato.js"></script>
