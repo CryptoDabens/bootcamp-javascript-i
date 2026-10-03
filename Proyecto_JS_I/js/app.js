@@ -97,18 +97,18 @@ const cargarIngresos = () => {
 
     //  const listaIngresos = document.getElementById('lista-ingresos');
     //  listaIngresos.innerHTML = ingresosHTML; 
-    //  Es otra forma de hacerlo, pero no es la más recomendable, ya que se hace un doble llamado al DOM. Conviene usar cuando vas a usar el elemento varias veces en la misma función. La ventaja es que Se lee en dos pasos claros y no buscas el elemento en el DOM cada vez.
+    //  Es otra forma de hacerlo, pero no es la más recomendable. Conviene usar cuando vas a usar el elemento varias veces en la misma función. La ventaja es que se lee en dos pasos claros y no buscas el elemento en el DOM cada vez.
 };
 
-const crearIngresosHTML = ingreso => {
+const crearIngresoHTML = ingreso => {
     let ingresoHTML = `
         <div class="elemento limpiarEstilos">
             <div class="elemento_descripcion">${ingreso.descripcion}</div> 
             <div class="derecha limpiarEstilos">
                 <div class="elemento_valor">${formatoMoneda(ingreso.valor)}</div>
                 <div class="elemento_eliminar">
-                    <button class="elemento_eliminar--btn">
-                        <ion-icon name="close-circle-outline">${onclick} = eliminarIngreso(${ingreso.id})</ion-icon>
+                    <button class="elemento_eliminar--btn" onclick="eliminarIngreso(${ingreso.id})">
+                        <ion-icon name="close-circle-outline"></ion-icon>
                     </button>
                 </div>
             </div>
