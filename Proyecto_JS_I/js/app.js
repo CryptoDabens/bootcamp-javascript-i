@@ -122,12 +122,43 @@ const crearIngresoHTML = ingreso => {
 };
 
 
+// ------------------------------------------------------
+// Avance 4: Cargar ingresos dinámicamente (página 15)
+// ------------------------------------------------------
+
+const cargarEgresos = () => {
+    let egresosHTML = '';
+
+    for (let egreso of egresos) {
+        egresosHTML += crearEgresoHTML(egreso); // el += es para concatenar cada egreso que se vaya creando en la función crearEgresoHTML
+    }
+    document.getElementById('lista-egresos').innerHTML = egresosHTML; 
+};
+
+const crearEgresoHTML = egreso => {
+    let egresoHTML = `<div class="elemento limpiarEstilos">
+                    <div class="elemento_descripcion">${egreso.descripcion}</div>
+                    <div class="derecha limpiarEstilos">
+                        <div class="elemento_valor">${formatoMoneda(egreso.valor)}</div>
+                        <div class="elemento_porcentaje">${formatoPorcentaje(egreso.porcentaje)}</div>
+                        <div class="elemento_eliminar">
+                            <button class="elemento_eliminar--btn" onclick="eliminarEgreso(${egreso.id})">
+                                <ion-icon name="close-circle-outline"></ion-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>`
+    return egresoHTML;
+}
+
+
 // Llamar a la función cargarCabecero
 // cargarCabecero(); <-- Queda sustituida por el Avance 4 en la función cargarApp, que se ejecutará al cargar la página.
 
 const cargarApp = () => {
     cargarCabecero();
     cargarIngresos();
+    cargarEgresos();
 }
 
 
