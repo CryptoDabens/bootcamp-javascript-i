@@ -8,8 +8,9 @@
 
 // Arreglos definitivos
 const ingresos = [
-    new Ingreso('Salario', 20000),
-    new Ingreso('Venta auto', 50000)
+    new Ingreso('Salario', 10000),
+    new Ingreso('Venta auto', 300000),
+    new Ingreso('Honorarios', 5000)
 ];
 
 const egresos = [
@@ -83,13 +84,82 @@ const formatoPorcentaje = valor => {
 };
 
 
+// ------------------------------------------------------
+// Avance 4: Cargar ingresos dinámicamente (página 14)
+// ------------------------------------------------------
+const cargarIngresos = () => {
+    let ingresosHTML = '';
+
+    for (let ingreso of ingresos) {
+        ingresosHTML += crearIngresoHTML(ingreso); // el += es para concatenar cada ingreso que se vaya creando en la función crearIngresoHTML
+    }
+    document.getElementById('lista-ingresos').innerHTML = ingresosHTML; /* Esta versión corta conviene cuando se va a usar el elemento una sola vez en la función. Se lee en un solo paso y no se hace doble llamado al DOM. */
+
+    //  const listaIngresos = document.getElementById('lista-ingresos');
+    //  listaIngresos.innerHTML = ingresosHTML; 
+    //  Es otra forma de hacerlo, pero no es la más recomendable. Conviene usar cuando vas a usar el elemento varias veces en la misma función. La ventaja es que se lee en dos pasos claros y no buscas el elemento en el DOM cada vez.
+};
+
+const crearIngresoHTML = ingreso => {
+    let ingresoHTML = `
+        <div class="elemento limpiarEstilos">
+            <div class="elemento_descripcion">${ingreso.descripcion}</div> 
+            <div class="derecha limpiarEstilos">
+                <div class="elemento_valor">${formatoMoneda(ingreso.valor)}</div>
+                <div class="elemento_eliminar">
+                    <button class="elemento_eliminar--btn" onclick="eliminarIngreso(${ingreso.id})">
+                        <ion-icon name="close-circle-outline"></ion-icon>
+                    </button>
+                </div>
+            </div>
+        </div>  
+        `;
+    // Se cambió "Salario" por ${ingreso.descripcion} para que se muestre la descripción de cada ingreso.
+    // Se cambió "+2,200.00" por ${formatoMoneda(ingreso.valor)} para que se muestre el valor de cada ingreso.
+    // Se cambió onclick="eliminarIngreso(1)" por ${onclick} = eliminarIngreso(${ingreso.id}) para que se pueda eliminar el ingreso correspondiente al id del ingreso.
+        
+    return ingresoHTML;    
+};
+
+
+// ------------------------------------------------------
+// Avance 4: Cargar ingresos dinámicamente (página 15)
+// ------------------------------------------------------
+
+const cargarEgresos = () => {
+    let egresosHTML = '';
+
+    for (let egreso of egresos) {
+        egresosHTML += crearEgresoHTML(egreso); // el += es para concatenar cada egreso que se vaya creando en la función crearEgresoHTML
+    }
+    document.getElementById('lista-egresos').innerHTML = egresosHTML; 
+};
+
+const crearEgresoHTML = egreso => {
+    let egresoHTML = `<div class="elemento limpiarEstilos">
+                    <div class="elemento_descripcion">${egreso.descripcion}</div>
+                    <div class="derecha limpiarEstilos">
+                        <div class="elemento_valor">${formatoMoneda(egreso.valor)}</div>
+                        <div class="elemento_porcentaje">${formatoPorcentaje(egreso.valor / totalEgresos)}</div>
+                        <div class="elemento_eliminar">
+                            <button class="elemento_eliminar--btn" onclick="eliminarEgreso(${egreso.id})">
+                                <ion-icon name="close-circle-outline"></ion-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>`
+    return egresoHTML;
+}
+
+
 // Llamar a la función cargarCabecero
 // cargarCabecero(); <-- Queda sustituida por el Avance 4 en la función cargarApp, que se ejecutará al cargar la página.
 
 const cargarApp = () => {
     cargarCabecero();
+    cargarIngresos();
+    cargarEgresos();
 }
 
-// ------------------------------------------------------
-// Fin del Avance 2
-// ------------------------------------------------------
+
+
