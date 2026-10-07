@@ -9,7 +9,7 @@
 // Arreglos definitivos
 const ingresos = [
     new Ingreso('Salario', 10000),
-    new Ingreso('Venta auto', 300000),
+    new Ingreso('Venta Reloj', 3000),
     new Ingreso('Honorarios', 5000)
 ];
 
@@ -173,8 +173,9 @@ const eliminarEgreso = (id) => {
 
     egresos.splice(indiceEliminar, 1); // splice elimina el elemento del arreglo en el índice encontrado por findIndex. El segundo parámetro indica cuántos elementos eliminar a partir del índice encontrado. En este caso, solo se elimina uno.)
 
-    cargarEgresos(); // Se llama a la función cargarEgresos para actualizar la lista de egresos en el HTML.
     cargarCabecero(); // Se llama a la función cargarCabecero para actualizar los valores de presupuesto, porcentaje, ingresos y egresos.
+    cargarEgresos(); // Se llama a la función cargarEgresos para actualizar la lista de egresos en el HTML.
+    
 };  
 
 
@@ -182,25 +183,32 @@ const eliminarEgreso = (id) => {
 const eliminarIngreso = (id) => {
     let indiceEliminar = ingresos.findIndex(ingreso => ingreso.id === id);
     ingresos.splice(indiceEliminar, 1);
-    cargarIngresos();
     cargarCabecero();
+    cargarIngresos();
 };
 
 // Continuación Avance 4: Darle funcionalidad al formulario
 const agregarDato = () => {
     let forma = document.getElementById('forma');
-    let tipo = document.getElementById('tipo').value;
-    let descripcion = document.getElementById('descripcion').value;
-    let valor = document.getElementById('valor').value;
+    let tipo = forma['tipo'].value;
+    let descripcion = forma['descripcion'].value;
+    let valor = forma['valor'].value;
 
     if (descripcion !== '' && valor !== '') {
-        new Ingreso(descripcion, valor);
-        cargarCabecero();
-        cargarIngresos();
+        if(tipo === 'ingreso') {
+            ingresos.push(new Ingreso(descripcion, +valor)); // con un "+" se puede convertir a numérico
+            cargarCabecero();
+            cargarIngresos();
+            
+        } else {
+            egresos.push(new Egreso(descripcion, +valor));
+            cargarCabecero();
+            cargarEgresos();
+            
+        }
+     
     }
 };
-
-
 
 // ----------------------------------------------
 
