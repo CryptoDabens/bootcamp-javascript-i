@@ -197,16 +197,14 @@ const agregarDato = () => {
     if (descripcion !== '' && valor !== '') {
         if(tipo === 'ingreso') {
             ingresos.push(new Ingreso(descripcion, +valor)); // con un "+" se puede convertir a numérico
-            cargarCabecero();
-            cargarIngresos();
-            
-        } else {
-            egresos.push(new Egreso(descripcion, +valor));
-            cargarCabecero();
-            cargarEgresos();
-            
+        cargarIngresos();
         }
-     
+        else {
+            egresos.push(new Egreso(descripcion, +valor));
+            cargarEgresos();
+        }
+        cargarCabecero();
+        document.getElementById('forma').reset();
     }
 };
 
