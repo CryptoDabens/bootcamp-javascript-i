@@ -65,14 +65,33 @@ const totalEgresos = () => {
 // ------------------------------------------------------
 
 // Función formatoMoneda, pa darle formato: estilo moneda, mondea MXN, y decimales igual a dos dígitos.
-const formatoMoneda = valor => {
+/* const formatoMoneda = valor => {
     const opciones= {
         style: "currency",
         currency: "MXN",
         minimumFractionDigits: 2
     }
     return valor.toLocaleString("es-MX", opciones);
+};*/
+
+/*// Código Leticia
+const formatoMoneda = (valor) => {
+  return valor.toLocaleString("es-MX", {
+    style: "currency",
+    currency: "MXN",
+    minimumFractionDigits: 2
+  });
+};*/
+
+// Código Fabiola
+const formatoMoneda = (valor) => {
+    return valor.toLocaleString("es-MX", {
+        style: "currency",
+        currency: "MXN",
+        currencyDisplay: "symbol"
+    }) + " MXN"; // concatena el símbolo de la moneda al final del valor formateado
 };
+
 
 // Función formatoPorcentaje
 const formatoPorcentaje = valor => {
@@ -145,7 +164,7 @@ pasado por la función formatoMoneda.
 • En el ícono close-circle-outline, asígnale el evento onclick e iguálalo a la función
 eliminarEgreso y pásale como parámetro el id del elemento egreso.*/
     let egresoHTML = `<div class="elemento limpiarEstilos">
-                    <div class="elemento_descripcion">${egreso.descripcion}</div> //
+                    <div class="elemento_descripcion">${egreso.descripcion}</div> 
                     <div class="derecha limpiarEstilos">
                         <div class="elemento_valor">${formatoMoneda(egreso.valor)}</div>
                         <div class="elemento_porcentaje">${formatoPorcentaje(egreso.valor / totalEgresos())}</div>
