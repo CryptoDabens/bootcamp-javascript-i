@@ -155,6 +155,58 @@ const crearEgresoHTML = egreso => {
 // Llamar a la función cargarCabecero
 // cargarCabecero(); <-- Queda sustituida por el Avance 4 en la función cargarApp, que se ejecutará al cargar la página.
 
+// ------------------------------------------------------
+// Avance 4: Eliminar ingresos y egresos (página 16)
+// ------------------------------------------------------
+
+const eliminarIngreso = (id) => {
+    let indiceEliminar = ingresos.findIndex(ingreso => ingreso.id === id);
+    ingresos.splice(indiceEliminar, 1);
+    cargarIngresos();
+    cargarCabecero();
+};
+
+const eliminarEgreso = (id) => {
+    let indiceEliminar = egresos.findIndex(egreso => egreso.id === id);
+    egresos.splice(indiceEliminar, 1);
+    cargarEgresos();
+    cargarCabecero();
+};
+
+
+// ------------------------------------------------------
+// Avance 4: Agregar ingresos y egresos (página 16)
+// ------------------------------------------------------
+
+const agregarDato = () => {
+    let tipo = document.getElementById('tipo').value;
+    let descripcion = document.getElementById('descripcion').value;
+    let valor = document.getElementById('valor').value;
+
+    if (descripcion !== '' && valor !== '') {
+        if (tipo === 'ingreso') {
+            const nuevoIngreso = new Ingreso(descripcion, valor);
+            ingresos.push(nuevoIngreso);  // ← push() agrega el nuevo ingreso al arreglo
+            cargarIngresos();
+        } else {
+            const nuevoEgreso = new Egreso(descripcion, valor);
+            egresos.push(nuevoEgreso);    // ← push() agrega el nuevo egreso al arreglo
+            cargarEgresos();
+        }
+
+        cargarCabecero();
+        document.getElementById('forma').reset(); // Limpiar el formulario
+    }
+};
+
+
+// Evento del formulario para capturar el submit
+document.getElementById('forma').addEventListener('submit', (evento) => {
+    evento.preventDefault(); // Evita que la página se recargue
+    agregarDato();
+});
+
+
 const cargarApp = () => {
     cargarCabecero();
     cargarIngresos();
