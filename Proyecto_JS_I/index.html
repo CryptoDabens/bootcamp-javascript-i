@@ -37,16 +37,17 @@
     </div>
 
     <!-- FORMULARIO -->
-    <form id="forma">
+    <form id="forma" onsubmit="return false"> <!-- Agrega el evento onsubmit, asignándole los valores “return false” al
+formulario con id forma. Evita que el formulario se envíe al presionar Enter  -->
         <div class="agregar">
             <div class="agregar_contenedor">
                 <select class="agregar_tipo" id="tipo">
                     <option value="ingreso" selected>+</option>
                     <option value="egreso">-</option>
                 </select>
-                <input type="text" class="agregar_descripcion" placeholder="Agregar Descripción" id="descripcion">
-                <input type="number" class="agregar_valor" placeholder="Valor" id="valor" step="any">
-                <button class="agregar_btn">
+                <input type="text" class="agregar_descripcion" placeholder="Agregar Descripción" id="descripcion"/>
+                <input type="number" class="agregar_valor" placeholder="Valor" id="valor" step="any"/>
+                <button class="agregar_btn" onclick="agregarDato()"> <!-- Agrega el evento onclick al botón con la clase agregar-btn -->
                     <ion-icon name="checkmark-circle-outline"></ion-icon>
                 </button> 
             </div>
