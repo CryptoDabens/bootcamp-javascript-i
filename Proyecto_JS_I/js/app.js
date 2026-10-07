@@ -123,7 +123,7 @@ const crearIngresoHTML = ingreso => {
 
 
 // ------------------------------------------------------
-// Avance 4: Cargar ingresos dinámicamente (página 15)
+// Avance 4: Cargar egresos dinámicamente (página 15)
 // ------------------------------------------------------
 
 const cargarEgresos = () => {
@@ -136,8 +136,16 @@ const cargarEgresos = () => {
 };
 
 const crearEgresoHTML = egreso => {
+    /* Declara la variable egresoHTML y asígnale, por medio de template string, el contenido
+del div lista-egresos con los siguientes cambios:
+• En lugar de escribir una cadena en el div elemento-descripcion, toma el contenido
+de egreso.descripcion. 
+• En el contenido del div elemento-valor, asígnale el valor del elemento egreso
+pasado por la función formatoMoneda.
+• En el ícono close-circle-outline, asígnale el evento onclick e iguálalo a la función
+eliminarEgreso y pásale como parámetro el id del elemento egreso.*/
     let egresoHTML = `<div class="elemento limpiarEstilos">
-                    <div class="elemento_descripcion">${egreso.descripcion}</div>
+                    <div class="elemento_descripcion">${egreso.descripcion}</div> //
                     <div class="derecha limpiarEstilos">
                         <div class="elemento_valor">${formatoMoneda(egreso.valor)}</div>
                         <div class="elemento_porcentaje">${formatoPorcentaje(egreso.valor / totalEgresos())}</div>
@@ -149,7 +157,51 @@ const crearEgresoHTML = egreso => {
                     </div>
                 </div>`
     return egresoHTML;
-}
+};
+
+
+// ------------------------------------------------------
+// Avance 4: Eliminar Egresos dinámicamente (página 16)
+// ------------------------------------------------------
+// Crear función EliminarEgreso, que reciba como parámetro el id del egreso a eliminar. 
+// Dentro de la función, declara la variable indiceEliminar y asígnale el valor del índice del egreso a eliminar, usando el método findIndex() del arreglo egresos. 
+// El método findIndex() recibe una función de callback que compara el id del egreso con el id pasado como parámetro. Luego, usa el método splice() del arreglo egresos para eliminar el egreso en el índice encontrado. 
+// Finalmente, llama a las funciones cargarCabecero() y cargarEgresos() para actualizar la vista.
+
+const eliminarEgreso = (id) => {
+    let indiceEliminar = egresos.findIndex(egreso => egreso.id === id); // findIndex devuelve el índice del primer elemento que cumpla con la condición. En este caso, el primer elemento cuyo id sea igual al id pasado como parámetro.
+
+    egresos.splice(indiceEliminar, 1); // splice elimina el elemento del arreglo en el índice encontrado por findIndex. El segundo parámetro indica cuántos elementos eliminar a partir del índice encontrado. En este caso, solo se elimina uno.)
+
+    cargarCabecero(); // Se llama a la función cargarCabecero para actualizar los valores de presupuesto, porcentaje, ingresos y egresos.
+    cargarEgresos(); // Se llama a la función cargarEgresos para actualizar la lista de egresos en el HTML.
+};  
+
+
+// Continuación Avance 4: Eliminar Ingreso dinámicamente (página 16) (este código es NO VIENE EN LA GUIA)
+const eliminarIngreso = (id) => {
+    let indiceEliminar = ingresos.findIndex(ingreso => ingreso.id === id);
+    ingresos.splice(indiceEliminar, 1);
+    cargarCabecero();
+    cargarIngresos();
+};
+
+// Continuación Avance 4: Darle funcionalidad al formulario
+const agregarDato = () => {
+    const forma = document.getElementById('forma');
+    let tipo = document.getElementById('tipo').value;
+    let descripcion = document.getElementById('descripcion').value;
+    let valor = document.getElementById('valor').value;
+
+    if (descripcion !== '' && valor !== '') {
+        new Ingreso(descripcion, valor);
+        cargarCabecero();
+        cargarIngresos();
+    }
+};
+
+
+
 
 
 // Llamar a la función cargarCabecero
@@ -159,7 +211,7 @@ const cargarApp = () => {
     cargarCabecero();
     cargarIngresos();
     cargarEgresos();
-}
+};
 
 
 
