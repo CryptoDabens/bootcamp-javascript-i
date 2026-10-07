@@ -173,8 +173,8 @@ const eliminarEgreso = (id) => {
 
     egresos.splice(indiceEliminar, 1); // splice elimina el elemento del arreglo en el índice encontrado por findIndex. El segundo parámetro indica cuántos elementos eliminar a partir del índice encontrado. En este caso, solo se elimina uno.)
 
-    cargarCabecero(); // Se llama a la función cargarCabecero para actualizar los valores de presupuesto, porcentaje, ingresos y egresos.
     cargarEgresos(); // Se llama a la función cargarEgresos para actualizar la lista de egresos en el HTML.
+    cargarCabecero(); // Se llama a la función cargarCabecero para actualizar los valores de presupuesto, porcentaje, ingresos y egresos.
 };  
 
 
@@ -182,13 +182,13 @@ const eliminarEgreso = (id) => {
 const eliminarIngreso = (id) => {
     let indiceEliminar = ingresos.findIndex(ingreso => ingreso.id === id);
     ingresos.splice(indiceEliminar, 1);
-    cargarCabecero();
     cargarIngresos();
+    cargarCabecero();
 };
 
 // Continuación Avance 4: Darle funcionalidad al formulario
 const agregarDato = () => {
-    const forma = document.getElementById('forma');
+    let forma = document.getElementById('forma');
     let tipo = document.getElementById('tipo').value;
     let descripcion = document.getElementById('descripcion').value;
     let valor = document.getElementById('valor').value;
@@ -202,7 +202,7 @@ const agregarDato = () => {
 
 
 
-
+// ----------------------------------------------
 
 // Llamar a la función cargarCabecero
 // cargarCabecero(); <-- Queda sustituida por el Avance 4 en la función cargarApp, que se ejecutará al cargar la página.
