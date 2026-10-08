@@ -60,6 +60,7 @@ body {
     text-align: center;
     margin-bottom: 25px;
     letter-spacing: 2px;
+    white-space: nowrap;
 }
 
 .presupuesto_ingreso,
