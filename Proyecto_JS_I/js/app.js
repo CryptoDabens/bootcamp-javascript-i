@@ -30,12 +30,12 @@ const cargarCabecero = ()  => {
     document.getElementById('porcentaje').innerHTML = formatoPorcentaje(porcentajeEgreso);
     document.getElementById('ingresos').innerHTML = formatoMoneda(totalIngresos());
     document.getElementById('egresos').innerHTML = formatoMoneda(totalEgresos());
-    
+
     /* Sustituido por el Avance 4
     console.log(formatoMoneda(presupuesto));
     console.log(formatoPorcentaje(porcentajeEgreso));
     console.log(formatoMoneda(totalIngresos()));
-    console.log(formatoMoneda(totalEgresos())); 
+    console.log(formatoMoneda(totalEgresos()));
     */
 };
 
@@ -45,7 +45,7 @@ const totalIngresos = () => {
     for (let ingreso of ingresos) {
         totalIngreso += ingreso.valor;
     }
-    return totalIngreso; 
+    return totalIngreso;
 };
  // Crear funciones para sumar egresos
 const totalEgresos = () => {
@@ -53,7 +53,7 @@ const totalEgresos = () => {
     for (let egreso of egresos) {
         totalEgreso += egreso.valor;
     }
-    return totalEgreso; 
+    return totalEgreso;
 };
 
 // ------------------------------------------------------
@@ -64,38 +64,18 @@ const totalEgresos = () => {
 // Inicio Avance 2, parte 2: Formatear valores y procentajes
 // ------------------------------------------------------
 
-// Función formatoMoneda, pa darle formato: estilo moneda, mondea MXN, y decimales igual a dos dígitos.
-/* const formatoMoneda = valor => {
-    const opciones= {
-        style: "currency",
-        currency: "MXN",
-        minimumFractionDigits: 2
-    }
-    return valor.toLocaleString("es-MX", opciones);
-};*/
-
-/*// Código Leticia
-const formatoMoneda = (valor) => {
-  return valor.toLocaleString("es-MX", {
-    style: "currency",
-    currency: "MXN",
-    minimumFractionDigits: 2
-  });
-};*/
-
-// Código Fabiola
+// Función formatoMoneda - Código Fabiola con MXN agregado
 const formatoMoneda = (valor) => {
     return valor.toLocaleString("es-MX", {
         style: "currency",
         currency: "MXN",
         currencyDisplay: "symbol"
-    }) + " MXN"; // concatena el símbolo de la moneda al final del valor formateado
+    }) + " MXN";
 };
-
 
 // Función formatoPorcentaje
 const formatoPorcentaje = valor => {
-    const opciones = { 
+    const opciones = {
         style: "percent",
         minimumFractionDigits: 2
     }
@@ -113,16 +93,12 @@ const cargarIngresos = () => {
         ingresosHTML += crearIngresoHTML(ingreso); // el += es para concatenar cada ingreso que se vaya creando en la función crearIngresoHTML
     }
     document.getElementById('lista-ingresos').innerHTML = ingresosHTML; /* Esta versión corta conviene cuando se va a usar el elemento una sola vez en la función. Se lee en un solo paso y no se hace doble llamado al DOM. */
-
-    //  const listaIngresos = document.getElementById('lista-ingresos');
-    //  listaIngresos.innerHTML = ingresosHTML; 
-    //  Es otra forma de hacerlo, pero no es la más recomendable. Conviene usar cuando vas a usar el elemento varias veces en la misma función. La ventaja es que se lee en dos pasos claros y no buscas el elemento en el DOM cada vez.
 };
 
 const crearIngresoHTML = ingreso => {
     let ingresoHTML = `
         <div class="elemento limpiarEstilos">
-            <div class="elemento_descripcion">${ingreso.descripcion}</div> 
+            <div class="elemento_descripcion">${ingreso.descripcion}</div>
             <div class="derecha limpiarEstilos">
                 <div class="elemento_valor">${formatoMoneda(ingreso.valor)}</div>
                 <div class="elemento_eliminar">
@@ -131,13 +107,9 @@ const crearIngresoHTML = ingreso => {
                     </button>
                 </div>
             </div>
-        </div>  
+        </div>
         `;
-    // Se cambió "Salario" por ${ingreso.descripcion} para que se muestre la descripción de cada ingreso.
-    // Se cambió "+2,200.00" por ${formatoMoneda(ingreso.valor)} para que se muestre el valor de cada ingreso.
-    // Se cambió onclick="eliminarIngreso(1)" por ${onclick} = eliminarIngreso(${ingreso.id}) para que se pueda eliminar el ingreso correspondiente al id del ingreso.
-        
-    return ingresoHTML;    
+    return ingresoHTML;
 };
 
 
@@ -151,20 +123,12 @@ const cargarEgresos = () => {
     for (let egreso of egresos) {
         egresosHTML += crearEgresoHTML(egreso); // el += es para concatenar cada egreso que se vaya creando en la función crearEgresoHTML
     }
-    document.getElementById('lista-egresos').innerHTML = egresosHTML; 
+    document.getElementById('lista-egresos').innerHTML = egresosHTML;
 };
 
 const crearEgresoHTML = egreso => {
-    /* Declara la variable egresoHTML y asígnale, por medio de template string, el contenido
-del div lista-egresos con los siguientes cambios:
-• En lugar de escribir una cadena en el div elemento-descripcion, toma el contenido
-de egreso.descripcion. 
-• En el contenido del div elemento-valor, asígnale el valor del elemento egreso
-pasado por la función formatoMoneda.
-• En el ícono close-circle-outline, asígnale el evento onclick e iguálalo a la función
-eliminarEgreso y pásale como parámetro el id del elemento egreso.*/
     let egresoHTML = `<div class="elemento limpiarEstilos">
-                    <div class="elemento_descripcion">${egreso.descripcion}</div> 
+                    <div class="elemento_descripcion">${egreso.descripcion}</div>
                     <div class="derecha limpiarEstilos">
                         <div class="elemento_valor">${formatoMoneda(egreso.valor)}</div>
                         <div class="elemento_porcentaje">${formatoPorcentaje(egreso.valor / totalEgresos())}</div>
@@ -180,25 +144,9 @@ eliminarEgreso y pásale como parámetro el id del elemento egreso.*/
 
 
 // ------------------------------------------------------
-// Avance 4: Eliminar Egresos dinámicamente (página 16)
+// Avance 4: Eliminar ingresos dinámicamente (página 16)
 // ------------------------------------------------------
-// Crear función EliminarEgreso, que reciba como parámetro el id del egreso a eliminar. 
-// Dentro de la función, declara la variable indiceEliminar y asígnale el valor del índice del egreso a eliminar, usando el método findIndex() del arreglo egresos. 
-// El método findIndex() recibe una función de callback que compara el id del egreso con el id pasado como parámetro. Luego, usa el método splice() del arreglo egresos para eliminar el egreso en el índice encontrado. 
-// Finalmente, llama a las funciones cargarCabecero() y cargarEgresos() para actualizar la vista.
 
-const eliminarEgreso = (id) => {
-    let indiceEliminar = egresos.findIndex(egreso => egreso.id === id); // findIndex devuelve el índice del primer elemento que cumpla con la condición. En este caso, el primer elemento cuyo id sea igual al id pasado como parámetro.
-
-    egresos.splice(indiceEliminar, 1); // splice elimina el elemento del arreglo en el índice encontrado por findIndex. El segundo parámetro indica cuántos elementos eliminar a partir del índice encontrado. En este caso, solo se elimina uno.)
-
-    cargarCabecero(); // Se llama a la función cargarCabecero para actualizar los valores de presupuesto, porcentaje, ingresos y egresos.
-    cargarEgresos(); // Se llama a la función cargarEgresos para actualizar la lista de egresos en el HTML.
-    
-};  
-
-
-// Continuación Avance 4: Eliminar Ingreso dinámicamente (página 16) (este código es NO VIENE EN LA GUIA)
 const eliminarIngreso = (id) => {
     let indiceEliminar = ingresos.findIndex(ingreso => ingreso.id === id);
     ingresos.splice(indiceEliminar, 1);
@@ -206,48 +154,16 @@ const eliminarIngreso = (id) => {
     cargarIngresos();
 };
 
-// Continuación Avance 4: Darle funcionalidad al formulario
-const agregarDato = () => {
-    let forma = document.getElementById('forma');
-    let tipo = forma['tipo'].value;
-    let descripcion = forma['descripcion'].value;
-    let valor = forma['valor'].value;
-
-    if (descripcion !== '' && valor !== '') {
-        if(tipo === 'ingreso') {
-            ingresos.push(new Ingreso(descripcion, +valor)); // con un "+" se puede convertir a numérico
-        cargarIngresos();
-        }
-        else {
-            egresos.push(new Egreso(descripcion, +valor));
-            cargarEgresos();
-        }
-        cargarCabecero();
-        document.getElementById('forma').reset();
-    }
-};
-
-// ----------------------------------------------
-
-// Llamar a la función cargarCabecero
-// cargarCabecero(); <-- Queda sustituida por el Avance 4 en la función cargarApp, que se ejecutará al cargar la página.
 
 // ------------------------------------------------------
-// Avance 4: Eliminar ingresos y egresos (página 16)
+// Avance 4: Eliminar egresos dinámicamente (página 16)
 // ------------------------------------------------------
-
-const eliminarIngreso = (id) => {
-    let indiceEliminar = ingresos.findIndex(ingreso => ingreso.id === id);
-    ingresos.splice(indiceEliminar, 1);
-    cargarIngresos();
-    cargarCabecero();
-};
 
 const eliminarEgreso = (id) => {
     let indiceEliminar = egresos.findIndex(egreso => egreso.id === id);
     egresos.splice(indiceEliminar, 1);
-    cargarEgresos();
     cargarCabecero();
+    cargarEgresos();
 };
 
 
@@ -289,6 +205,3 @@ const cargarApp = () => {
     cargarIngresos();
     cargarEgresos();
 };
-
-
-
