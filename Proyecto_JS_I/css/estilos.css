@@ -258,3 +258,38 @@ h2 {
 .elemento:hover .elemento_eliminar--btn { display: block; }
 .elemento:hover .elemento_valor { transform: translateX(-20px); }
 .elemento:hover .elemento_porcentaje { transform: translateX(-20px); }
+
+/* .copyright {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    background-color: white;
+    font-size: 14px;
+    color: #555;
+} */
+
+
+.copyright {
+    height: 50vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: #fff;
+    background: url(fondo.png), #7b4397;
+    background: url(fondo.png), -webkit-gradient(linear, right top, left top, from(#7b4397), to(#dc2430));
+    background: url(fondo.png), linear-gradient(to left, #7b4397, #dc2430);
+    text-align: center;
+    font-size: 14px;
+}
+
+.copyright p {
+    margin: 0;
+    word-wrap: break-word;   /* El texto se ajusta si es necesario */
+    line-height: 1.2;        /* Altura de línea compacta */
+    font-size: 18px;          /* Tamaño de fuente más pequeño */
+}
