@@ -146,13 +146,27 @@ const crearEgresoHTML = egreso => {
 // ------------------------------------------------------
 // Avance 4: Eliminar ingresos dinámicamente (página 16)
 // ------------------------------------------------------
+// Crear función EliminarEgreso, que reciba como parámetro el id del egreso a eliminar. 
+// Dentro de la función, declara la variable indiceEliminar y asígnale el valor del índice del egreso a eliminar, usando el método findIndex() del arreglo egresos. 
+// El método findIndex() recibe una función de callback que compara el id del egreso con el id pasado como parámetro. Luego, usa el método splice() del arreglo egresos para eliminar el egreso en el índice encontrado. 
+// Finalmente, llama a las funciones cargarCabecero() y cargarEgresos() para actualizar la vista.
 
+const eliminarEgreso = (id) => { 
+    let indiceEliminar = egresos.findIndex(egreso => egreso.id === id); // findIndex() devuelve el índice del primer elemento que cumple con la condición de la función de callback. En este caso, busca el índice del egreso cuyo id sea igual al id pasado como parámetro.
+    egresos.splice(indiceEliminar, 1); // splice() elimina el elemento en el índice encontrado. El segundo parámetro indica cuántos elementos eliminar, en este caso 1.
+    cargarCabecero(); // para actualizar el presupuesto y los porcentajes después de eliminar un egreso.
+    cargarEgresos(); // para actualizar la lista de egresos después de eliminar un egreso.
+};
+
+
+// Continuación Avance 4: Eliminar Ingreso dinámicamente (página 16) (este código es NO VIENE EN LA GUIA)
 const eliminarIngreso = (id) => {
     let indiceEliminar = ingresos.findIndex(ingreso => ingreso.id === id);
     ingresos.splice(indiceEliminar, 1);
     cargarCabecero();
-    cargarIngresos();
-};
+    cargarIngresos();  
+}
+
 
 
 // ------------------------------------------------------
@@ -172,23 +186,26 @@ const eliminarEgreso = (id) => {
 // ------------------------------------------------------
 
 const agregarDato = () => {
-    let tipo = document.getElementById('tipo').value;
-    let descripcion = document.getElementById('descripcion').value;
-    let valor = document.getElementById('valor').value;
+    // 1. Obtener valores del formulario
+    let forma = document.getElementById('forma'); // Se obtiene el elemento del formulario con id "forma" y se asigna a la variable forma.
+    let tipo = forma['tipo'].value; // Se obtiene el valor del elemento del formulario con name "tipo" y se asigna a la variable tipo. El valor puede ser "ingreso" o "egreso".
+    let descripcion = forma['descripcion'].value; // Se obtiene el valor del elemento del formulario con name "descripcion" y se asigna a la variable descripcion. El valor es una cadena de texto.
+    let valor = forma['valor'].value; // parse float no es necesario porque se convierte a numérico con el "+" en la línea 108 y 112.
 
+    // 2. Validar que no estén vacíos
     if (descripcion !== '' && valor !== '') {
-        if (tipo === 'ingreso') {
-            const nuevoIngreso = new Ingreso(descripcion, valor);
-            ingresos.push(nuevoIngreso);  // ← push() agrega el nuevo ingreso al arreglo
-            cargarIngresos();
-        } else {
-            const nuevoEgreso = new Egreso(descripcion, valor);
-            egresos.push(nuevoEgreso);    // ← push() agrega el nuevo egreso al arreglo
+        if(tipo === 'ingreso') { // 3. Si es ingreso: crear, agregar, actualizar vistas
+            ingresos.push(new Ingreso(descripcion, +valor)); // con un "+" se puede convertir a numérico
+        cargarCabecero();
+        cargarIngresos();
+        }
+        else { // 4. Si es egreso: crear, agregar, actualizar vistas
+            egresos.push(new Egreso(descripcion, +valor));
+            cargarCabecero();
             cargarEgresos();
         }
-
-        cargarCabecero();
-        document.getElementById('forma').reset(); // Limpiar el formulario
+         // 5. Limpiar formulario después de agregar un dato
+        document.getElementById('forma').reset();
     }
 };
 
