@@ -206,21 +206,25 @@ const eliminarIngreso = (id) => {
 
 // Continuación Avance 4: Darle funcionalidad al formulario
 const agregarDato = () => {
-    let forma = document.getElementById('forma');
-    let tipo = forma['tipo'].value;
-    let descripcion = forma['descripcion'].value;
-    let valor = forma['valor'].value;
+    // 1. Obtener valores del formulario
+    let forma = document.getElementById('forma'); // Se obtiene el elemento del formulario con id "forma" y se asigna a la variable forma.
+    let tipo = forma['tipo'].value; // Se obtiene el valor del elemento del formulario con name "tipo" y se asigna a la variable tipo. El valor puede ser "ingreso" o "egreso".
+    let descripcion = forma['descripcion'].value; // Se obtiene el valor del elemento del formulario con name "descripcion" y se asigna a la variable descripcion. El valor es una cadena de texto.
+    let valor = forma['valor'].value; // parse float no es necesario porque se convierte a numérico con el "+" en la línea 108 y 112.
 
+    // 2. Validar que no estén vacíos
     if (descripcion !== '' && valor !== '') {
-        if(tipo === 'ingreso') {
+        if(tipo === 'ingreso') { // 3. Si es ingreso: crear, agregar, actualizar vistas
             ingresos.push(new Ingreso(descripcion, +valor)); // con un "+" se puede convertir a numérico
+        cargarCabecero();
         cargarIngresos();
         }
-        else {
+        else { // 4. Si es egreso: crear, agregar, actualizar vistas
             egresos.push(new Egreso(descripcion, +valor));
+            cargarCabecero();
             cargarEgresos();
         }
-        cargarCabecero();
+         // 5. Limpiar formulario después de agregar un dato
         document.getElementById('forma').reset();
     }
 };
