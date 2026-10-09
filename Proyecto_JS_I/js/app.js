@@ -200,8 +200,9 @@ const eliminarIngreso = (id) => {
     let indiceEliminar = ingresos.findIndex(ingreso => ingreso.id === id);
     ingresos.splice(indiceEliminar, 1);
     cargarCabecero();
-    cargarIngresos();
-};
+    cargarIngresos();  
+}
+
 
 // Continuación Avance 4: Darle funcionalidad al formulario
 const agregarDato = () => {
