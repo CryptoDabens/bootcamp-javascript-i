@@ -187,15 +187,12 @@ eliminarEgreso y pásale como parámetro el id del elemento egreso.*/
 // El método findIndex() recibe una función de callback que compara el id del egreso con el id pasado como parámetro. Luego, usa el método splice() del arreglo egresos para eliminar el egreso en el índice encontrado. 
 // Finalmente, llama a las funciones cargarCabecero() y cargarEgresos() para actualizar la vista.
 
-const eliminarEgreso = (id) => {
-    let indiceEliminar = egresos.findIndex(egreso => egreso.id === id); // findIndex devuelve el índice del primer elemento que cumpla con la condición. En este caso, el primer elemento cuyo id sea igual al id pasado como parámetro.
-
-    egresos.splice(indiceEliminar, 1); // splice elimina el elemento del arreglo en el índice encontrado por findIndex. El segundo parámetro indica cuántos elementos eliminar a partir del índice encontrado. En este caso, solo se elimina uno.)
-
-    cargarCabecero(); // Se llama a la función cargarCabecero para actualizar los valores de presupuesto, porcentaje, ingresos y egresos.
-    cargarEgresos(); // Se llama a la función cargarEgresos para actualizar la lista de egresos en el HTML.
-    
-};  
+const eliminarEgreso = (id) => { 
+    let indiceEliminar = egresos.findIndex(egreso => egreso.id === id); // findIndex() devuelve el índice del primer elemento que cumple con la condición de la función de callback. En este caso, busca el índice del egreso cuyo id sea igual al id pasado como parámetro.
+    egresos.splice(indiceEliminar, 1); // splice() elimina el elemento en el índice encontrado. El segundo parámetro indica cuántos elementos eliminar, en este caso 1.
+    cargarCabecero(); // para actualizar el presupuesto y los porcentajes después de eliminar un egreso.
+    cargarEgresos(); // para actualizar la lista de egresos después de eliminar un egreso.
+};
 
 
 // Continuación Avance 4: Eliminar Ingreso dinámicamente (página 16) (este código es NO VIENE EN LA GUIA)
