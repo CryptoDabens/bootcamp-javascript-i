@@ -168,19 +168,6 @@ const eliminarIngreso = (id) => {
 }
 
 
-
-// ------------------------------------------------------
-// Avance 4: Eliminar egresos dinámicamente (página 16)
-// ------------------------------------------------------
-
-const eliminarEgreso = (id) => {
-    let indiceEliminar = egresos.findIndex(egreso => egreso.id === id);
-    egresos.splice(indiceEliminar, 1);
-    cargarCabecero();
-    cargarEgresos();
-};
-
-
 // ------------------------------------------------------
 // Avance 4: Agregar ingresos y egresos (página 16)
 // ------------------------------------------------------
@@ -208,14 +195,6 @@ const agregarDato = () => {
         document.getElementById('forma').reset();
     }
 };
-
-
-// Evento del formulario para capturar el submit
-document.getElementById('forma').addEventListener('submit', (evento) => {
-    evento.preventDefault(); // Evita que la página se recargue
-    agregarDato();
-});
-
 
 const cargarApp = () => {
     cargarCabecero();
